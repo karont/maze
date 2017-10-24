@@ -130,9 +130,13 @@ namespace Maze
             switch(id)
             {
                 case (0011):
+                case (0010):
+                case (0001):
                     icon = '═';
                     break;
                 case (1100):
+                case (1000):
+                case (0100):
                     icon = '║';
                     break;
                 case (1010):
@@ -159,6 +163,7 @@ namespace Maze
                 case (0111):
                     icon = '╦';
                     break;
+                case (0000):
                 case (1111):
                     icon = '╬';
                     break;

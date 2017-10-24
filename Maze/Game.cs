@@ -18,7 +18,7 @@ namespace Maze
             Console.SetWindowSize(85, 85);
             Console.CursorVisible = true;
 
-            maze = new Maze(50, 50);
+            maze = new Maze(30, 30);
             maze.drawMaze();
             run();
         }
