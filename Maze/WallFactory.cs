@@ -67,7 +67,7 @@ namespace Maze
             return new Wall(id, choseIconWall(id), top, botton, right, left,  x,  y);
         }
 
-        public static void updateWalls (Wall walltop, Wall wallbotton, Wall wallright, Wall wallleft, Wall wallcenter)
+        public static void newWalls (Wall walltop, Wall wallbotton, Wall wallright, Wall wallleft, Wall wallcenter)
         {
            
 
@@ -108,6 +108,41 @@ namespace Maze
 
             Draw.drawIcon(wallcenter.icon, wallcenter.x, wallcenter.y);
 
+
+        }
+
+        public static void deleteWall(Wall walltop, Wall wallbotton, Wall wallright, Wall wallleft, Elements wallcenter)
+        {
+            if (walltop != null)
+            {
+                walltop.botton = false;
+                recalculateWall(walltop);
+
+            }
+
+            if (wallbotton != null)
+            {
+                wallbotton.top = false;
+                recalculateWall(wallbotton);
+
+            }
+
+            if (wallright != null)
+            {
+
+                wallright.left = false;
+                recalculateWall(wallright);
+
+            }
+
+            if (wallleft != null)
+            {
+                wallleft.right = false;
+                recalculateWall(wallleft);
+
+            }
+
+            Draw.drawIcon(wallcenter.icon, wallcenter.x, wallcenter.y);
 
         }
         public static void recalculateWall(Wall wall)

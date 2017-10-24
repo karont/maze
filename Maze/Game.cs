@@ -11,11 +11,11 @@ namespace Maze
     {
         public Maze maze; // Contains the maze
 
-        int x = 1, y = 1; // Contains current cursor position.
-        int lastx = 1, lasty = 1; // Contains last current cursor position.
+        int x = Constants.xstart+1, y = Constants.ystart+1; // Contains current cursor position.
+        int lastx = Constants.xstart, lasty = Constants.ystart; // Contains last current cursor position.
         public Game ()
         {
-            Console.SetWindowSize(85, 85);
+            Console.SetWindowSize(Constants.height, Constants.width);
             Console.CursorVisible = true;
 
             maze = new Maze(30, 30);
@@ -41,38 +41,40 @@ namespace Maze
                 switch (command)
                 {
                     case ConsoleKey.DownArrow:
-                        if (y < maze.ysize - 2)
+                        if (y < Constants.ystart + maze.ysize - 2)
                         {
                             y++;
                             move(x, y);
                         }
                         break;
                     case ConsoleKey.UpArrow:
-                        if (y > 1)
+                        if (y > Constants.ystart + 1)
                         {
                             y--;
                             move(x, y);
                         }
-                        Console.SetCursorPosition(x, y);
                         break;
                     case ConsoleKey.LeftArrow:
-                        if (x > 1)
+                        if (x > Constants.xstart + 1)
                         {
                             x--;
                             move(x, y);
                         }
                         break;
                     case ConsoleKey.RightArrow:
-                        if (x < maze.xsize - 2)
+                        if (x < Constants.xstart +  maze.xsize - 2)
                         {
                             x++;
                             move(x, y);
                         }
                         
                         break;
-                    case ConsoleKey.Enter:
+                    case ConsoleKey.Q:
 
                         drawWall(x, y);
+                        break;
+                    case ConsoleKey.W:
+                        deleteElement(x, y);
                         break;
                 }
 
@@ -84,7 +86,8 @@ namespace Maze
         {
             Console.SetCursorPosition(0, 60);
             Console.Write("x = {0}  y = {1}", x,y);
-            Console.SetCursorPosition(x, y);
+            Draw.setCursorPosition(x, y);
+
 
 
         }
@@ -92,7 +95,7 @@ namespace Maze
         {
             try
             {
-                if (x >= 0 && y >= 0) // 0-based
+                if (x >= Constants.xstart && y >= Constants.xstart) // 0-based
                 {
 
                     maze.drawElement(lastx, lasty);
@@ -109,6 +112,11 @@ namespace Maze
         private void drawWall(int x, int y)
         {
             maze.drawWall(x, y);
-        } 
+        }
+        
+        private void deleteElement(int x, int y)
+        {
+            maze.deleteElement(x, y);
+        }
     }
 }

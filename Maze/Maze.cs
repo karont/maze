@@ -68,17 +68,22 @@ namespace Maze
                 }
 
             }
-            Console.SetCursorPosition(1, 1);
+            Draw.setCursorInitialPosition();
         }
 
         public void drawElement(int x, int y)
         {
+            x = x - Constants.xstart-1;
+            y = y - Constants.ystart-1;
             Draw.drawIcon(box[x, y].icon, x, y);
 
         }
 
         public void drawWall(int x, int y)
         {
+            x = x - Constants.xstart-1;
+            y = y - Constants.ystart-1;
+
             Wall top = null;
             Wall botton = null;
             Wall right = null;
@@ -96,10 +101,38 @@ namespace Maze
             if (x > 0)
                 if (box[x-1, y].id == 1) left = (Wall)box[x-1, y];  //wall on left
 
-            WallFactory.updateWalls(top, botton, right, left, center);
+            WallFactory.newWalls(top, botton, right, left, center);
 
-            int i = 1;
-            i++;
         }
+
+        public void deleteElement(int x, int y)
+        {
+            x = x - Constants.xstart;
+            y = y - Constants.ystart;
+
+            if (box[x,y].id == 1)
+            {
+                Wall top = null;
+                Wall botton = null;
+                Wall right = null;
+                Wall left = null;
+                Elements center = new Elements(x, y);
+
+                box[x, y] = center;
+
+                if (y > 0)
+                    if (box[x, y - 1].id == 1) top = (Wall)box[x, y - 1];  //wall on top
+                if (y < ysize)
+                    if (box[x, y + 1].id == 1) botton = (Wall)box[x, y + 1];  //wall on botton
+                if (x < xsize)
+                    if (box[x + 1, y].id == 1) right = (Wall)box[x + 1, y];  //wall on right
+                if (x > 0)
+                    if (box[x - 1, y].id == 1) left = (Wall)box[x - 1, y];  //wall on left
+
+                WallFactory.deleteWall(top, botton, right, left, center);
+            }
+        }
+
+
     }
 }

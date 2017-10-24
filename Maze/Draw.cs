@@ -10,8 +10,18 @@ namespace Maze
     {
         public static void drawIcon(char icon, int x, int y)
         {
-            Console.SetCursorPosition(x, y);
+            Console.SetCursorPosition(Constants.xstart + x, Constants.ystart + y);
             Console.Write(icon);
+        }
+
+        public static void setCursorInitialPosition ()
+        {
+            Console.SetCursorPosition(Constants.xstart+1, Constants.ystart+1);
+        }
+
+        public static void setCursorPosition(int x, int y)
+        {
+            Console.SetCursorPosition(Constants.xstart+x, Constants.ystart+y);
         }
     }
 }
