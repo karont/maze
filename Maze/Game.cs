@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Maze
 {
-    class Game
+    public class Game
     {
         public Maze maze; // Contains the maze
 
@@ -46,7 +46,6 @@ namespace Maze
                             y++;
                             move(x, y);
                         }
-
                         break;
                     case ConsoleKey.UpArrow:
                         if (y > 1)
@@ -54,6 +53,7 @@ namespace Maze
                             y--;
                             move(x, y);
                         }
+                        Console.SetCursorPosition(x, y);
                         break;
                     case ConsoleKey.LeftArrow:
                         if (x > 1)
@@ -68,7 +68,7 @@ namespace Maze
                             x++;
                             move(x, y);
                         }
-
+                        
                         break;
                     case ConsoleKey.Enter:
 
@@ -76,10 +76,19 @@ namespace Maze
                         break;
                 }
 
-                
+                drawPosition();
             }
         }
-        public  void move( int x, int y)
+
+        private void drawPosition()
+        {
+            Console.SetCursorPosition(0, 60);
+            Console.Write("x = {0}  y = {1}", x,y);
+            Console.SetCursorPosition(x, y);
+
+
+        }
+        private  void move( int x, int y)
         {
             try
             {
@@ -87,7 +96,6 @@ namespace Maze
                 {
 
                     maze.drawElement(lastx, lasty);
-                    Console.SetCursorPosition(x, y);
                     lastx = x;
                     lasty = y;
                     
@@ -98,7 +106,7 @@ namespace Maze
             }
         }
 
-        public void drawWall(int x, int y)
+        private void drawWall(int x, int y)
         {
             maze.drawWall(x, y);
         } 

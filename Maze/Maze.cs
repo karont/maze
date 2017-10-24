@@ -64,8 +64,7 @@ namespace Maze
             {
                 for (int j = 0; j < ysize; j++)
                 {
-                    Console.SetCursorPosition(i,j);
-                    Console.Write(box[i,j].icon);
+                    Draw.drawIcon(box[i, j].icon,i, j);
                 }
 
             }
@@ -74,8 +73,8 @@ namespace Maze
 
         public void drawElement(int x, int y)
         {
-            Console.SetCursorPosition(x, y);
-            Console.Write(box[x, y].icon);
+            Draw.drawIcon(box[x, y].icon, x, y);
+
         }
 
         public void drawWall(int x, int y)
@@ -84,21 +83,23 @@ namespace Maze
             Wall botton = null;
             Wall right = null;
             Wall left = null;
-            Wall center = new Wall();
+            Wall center = new Wall(x,y);
 
+            box[x, y] = center;
 
-            if (y > 1)
-                if (box[x, y--].id == 1) top = (Wall)box[x, y--];  //wall on top
-            if (y < ysize--)
-                if (box[x, y++].id == 1) botton = (Wall)box[x, y++];  //wall on botton
-            if (x < xsize--)
-                if (box[x++, y].id == 1) right = (Wall)box[x, y--];  //wall on right
-            if (x > 1)
-                if (box[x--, y].id == 1) left = (Wall)box[x, y--];  //wall on left
+            if (y > 0)
+                if (box[x, y-1].id == 1) top = (Wall)box[x, y-1];  //wall on top
+            if (y < ysize)
+                if (box[x, y+1].id == 1) botton = (Wall)box[x, y+1];  //wall on botton
+            if (x < xsize)
+                if (box[x+1, y].id == 1) right = (Wall)box[x+1, y];  //wall on right
+            if (x > 0)
+                if (box[x-1, y].id == 1) left = (Wall)box[x-1, y];  //wall on left
 
             WallFactory.updateWalls(top, botton, right, left, center);
 
-
+            int i = 1;
+            i++;
         }
     }
 }
