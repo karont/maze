@@ -9,11 +9,10 @@ namespace Maze
 {
     class Game
     {
-        public Maze maze;
-        const char toWrite = '*'; // Character to write on-screen.
+        public Maze maze; // Contains the maze
 
-        int x = 0, y = 0; // Contains current cursor position.
-        int lastx = 0, lasty = 0; // Contains last current cursor position.
+        int x = 1, y = 1; // Contains current cursor position.
+        int lastx = 1, lasty = 1; // Contains last current cursor position.
         public Game ()
         {
             Console.SetWindowSize(85, 85);
@@ -28,45 +27,59 @@ namespace Maze
         {
             while (true)
             {
-                if (Console.KeyAvailable)
-                {
-                    var command = Console.ReadKey().Key;
-
-                    switch (command)
-                    {
-                        case ConsoleKey.DownArrow:
-                            if(y < maze.y-1)
-                            {
-                                y++;
-                            }
-                            
-                            break;
-                        case ConsoleKey.UpArrow:
-                            if (y > 0)
-                            {
-                                y--;
-                            }
-                            break;
-                        case ConsoleKey.LeftArrow:
-                            if (x > 0)
-                            {
-                                x--;
-                            }
-                            break;
-                        case ConsoleKey.RightArrow:
-                            if(x < maze.x-1)
-                            {
-                                x++;
-                            }
-                            
-                            break;
-                    }
-
-                    Write(toWrite, x, y);
-                }
+                action();
             }
         }
-        public  void Write(char toWrite, int x = 0, int y = 0)
+
+        private void action()
+        {
+
+            if (Console.KeyAvailable)
+            {
+                var command = Console.ReadKey().Key;
+
+                switch (command)
+                {
+                    case ConsoleKey.DownArrow:
+                        if (y < maze.ysize - 2)
+                        {
+                            y++;
+                            move(x, y);
+                        }
+
+                        break;
+                    case ConsoleKey.UpArrow:
+                        if (y > 1)
+                        {
+                            y--;
+                            move(x, y);
+                        }
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        if (x > 1)
+                        {
+                            x--;
+                            move(x, y);
+                        }
+                        break;
+                    case ConsoleKey.RightArrow:
+                        if (x < maze.xsize - 2)
+                        {
+                            x++;
+                            move(x, y);
+                        }
+
+                        break;
+                    case ConsoleKey.Enter:
+
+                        drawWall(x, y);
+                        break;
+                }
+
+                
+            }
+        }
+        public  void move( int x, int y)
         {
             try
             {
@@ -78,12 +91,16 @@ namespace Maze
                     lastx = x;
                     lasty = y;
                     
-                    //Console.Write(toWrite);
                 }
             }
             catch (Exception)
             {
             }
         }
+
+        public void drawWall(int x, int y)
+        {
+            maze.drawWall(x, y);
+        } 
     }
 }
