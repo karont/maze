@@ -15,7 +15,7 @@ namespace Maze
         int lastx = 1, lasty = 1; // Contains last current cursor position.
         public Game ()
         {
-            Console.SetWindowSize(Constants.height, Constants.width);
+            Console.SetWindowSize(Console.LargestWindowWidth-150,Console.LargestWindowHeight-20);
             Console.CursorVisible = true;
 
             maze = new Maze(30, 30);
