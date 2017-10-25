@@ -10,7 +10,7 @@ namespace Maze
     {
         public static Dor createDor()
         {
-            return new Dor();
+            return null;
         }
     }
 }
