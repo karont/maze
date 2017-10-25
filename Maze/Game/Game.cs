@@ -115,5 +115,9 @@ namespace Maze
         {
             maze.deleteElement(x, y);
         }
+        private void drawElement()
+        {
+
+        }
     }
 }

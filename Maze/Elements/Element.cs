@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Maze
 {
-    public class Elements
+    public class Element
     {
 
         public int x { get; set; }
@@ -15,15 +15,18 @@ namespace Maze
         public int id { get; set; } = 0; /**id for type objet
                                             *    null = 0
                                             *    wall = 1
+                                            *    dor = 2
+                                            *    key = 3
+                                            *    trap = 4
                                             *    **/
 
-        public Elements(int x, int y)
+        public Element(int x, int y)
         {
             this.x = x;
             this.y = y;
         }
 
-        public Elements()
+        public Element()
         {
         }
 

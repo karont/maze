@@ -18,7 +18,7 @@ namespace Maze
      * 
      * 
      * *****************************************/
-    static public class WallFactory
+     public static class WallFactory
     {
         public static Wall createWall(bool top, bool botton, bool right, bool left, int x, int y)
         {
@@ -111,7 +111,7 @@ namespace Maze
 
         }
 
-        public static void deleteWall(Wall walltop, Wall wallbotton, Wall wallright, Wall wallleft, Elements wallcenter)
+        public static void deleteWall(Wall walltop, Wall wallbotton, Wall wallright, Wall wallleft, Element wallcenter)
         {
             if (walltop != null)
             {

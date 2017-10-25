@@ -43,22 +43,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants.cs" />
-    <Compile Include="Draw.cs" />
-    <Compile Include="Game.cs" />
-    <Compile Include="Maze.cs" />
+    <Compile Include="Utils\Constants.cs" />
+    <Compile Include="Elements\Dor.cs" />
+    <Compile Include="Utils\Draw.cs" />
+    <Compile Include="Game\Game.cs" />
+    <Compile Include="Elements\Key.cs" />
+    <Compile Include="Game\Maze.cs" />
+    <Compile Include="Factories\ObjetsFactory.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Elements.cs" />
+    <Compile Include="Elements\Element.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Wall.cs" />
-    <Compile Include="WallFactory.cs" />
+    <Compile Include="Elements\Trap.cs" />
+    <Compile Include="Elements\Wall.cs" />
+    <Compile Include="Factories\WallFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Elements\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

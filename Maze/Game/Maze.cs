@@ -9,9 +9,9 @@ namespace Maze
 {
     public class Maze
     {
-        public  Elements[,] box { get; set; }
+        public  Element[,] box { get; set; }
 
-        public Elements[,] inibox { get; set; }
+        public Element[,] inibox { get; set; }
 
         public int ysize { get; set; }
         public int xsize { get; set; }
@@ -23,7 +23,7 @@ namespace Maze
             this.ysize = y;
             
 
-            box = new Elements[this.xsize,this.ysize ];
+            box = new Element[this.xsize,this.ysize ];
             buildMaze();
         }
 
@@ -35,7 +35,7 @@ namespace Maze
                 for (int j = 0; j < ysize; j++)
                 {
 
-                    box[i, j] = new Elements(i,j);
+                    box[i, j] = new Element(i,j);
                 }
 
             }
@@ -110,7 +110,7 @@ namespace Maze
                 Wall botton = null;
                 Wall right = null;
                 Wall left = null;
-                Elements center = new Elements(x, y);
+                Element center = new Element(x, y);
 
                 box[x, y] = center;
 

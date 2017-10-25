@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Maze
 {
-    public class Wall : Elements
+    public class Wall : Element
     {
         // id = 1
         public bool top { get; set; }    /**Conection with the other wall**/
