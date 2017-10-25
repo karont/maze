@@ -73,16 +73,12 @@ namespace Maze
 
         public void drawElement(int x, int y)
         {
-            x = x - Constants.xstart-1;
-            y = y - Constants.ystart-1;
             Draw.drawIcon(box[x, y].icon, x, y);
 
         }
 
         public void drawWall(int x, int y)
         {
-            x = x - Constants.xstart-1;
-            y = y - Constants.ystart-1;
 
             Wall top = null;
             Wall botton = null;
@@ -107,8 +103,6 @@ namespace Maze
 
         public void deleteElement(int x, int y)
         {
-            x = x - Constants.xstart;
-            y = y - Constants.ystart;
 
             if (box[x,y].id == 1)
             {

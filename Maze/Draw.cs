@@ -23,5 +23,12 @@ namespace Maze
         {
             Console.SetCursorPosition(Constants.xstart+x, Constants.ystart+y);
         }
+
+        public static void drawPosition(int x, int y)
+        {
+            Console.SetCursorPosition(0, Constants.ystart +50);
+            Console.Write("x = {0}  y = {1}", x, y);
+            Draw.setCursorPosition(x, y);
+        }
     }
 }

@@ -11,8 +11,8 @@ namespace Maze
     {
         public Maze maze; // Contains the maze
 
-        int x = Constants.xstart+1, y = Constants.ystart+1; // Contains current cursor position.
-        int lastx = Constants.xstart, lasty = Constants.ystart; // Contains last current cursor position.
+        int x = 1, y = 1; // Contains current cursor position.
+        int lastx = 1, lasty = 1; // Contains last current cursor position.
         public Game ()
         {
             Console.SetWindowSize(Constants.height, Constants.width);
@@ -41,28 +41,28 @@ namespace Maze
                 switch (command)
                 {
                     case ConsoleKey.DownArrow:
-                        if (y < Constants.ystart + maze.ysize - 2)
+                        if (y <  maze.ysize - 2)
                         {
                             y++;
                             move(x, y);
                         }
                         break;
                     case ConsoleKey.UpArrow:
-                        if (y > Constants.ystart + 1)
+                        if (y > 1)
                         {
                             y--;
                             move(x, y);
                         }
                         break;
                     case ConsoleKey.LeftArrow:
-                        if (x > Constants.xstart + 1)
+                        if (x > 1)
                         {
                             x--;
                             move(x, y);
                         }
                         break;
                     case ConsoleKey.RightArrow:
-                        if (x < Constants.xstart +  maze.xsize - 2)
+                        if (x < maze.xsize - 2)
                         {
                             x++;
                             move(x, y);
@@ -84,18 +84,15 @@ namespace Maze
 
         private void drawPosition()
         {
-            Console.SetCursorPosition(0, 60);
-            Console.Write("x = {0}  y = {1}", x,y);
-            Draw.setCursorPosition(x, y);
 
-
+            Draw.drawPosition(x, y);
 
         }
         private  void move( int x, int y)
         {
             try
             {
-                if (x >= Constants.xstart && y >= Constants.xstart) // 0-based
+                if (x >= 0 && y >= 0) // 0-based
                 {
 
                     maze.drawElement(lastx, lasty);
